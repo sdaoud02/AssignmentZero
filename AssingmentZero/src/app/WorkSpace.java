@@ -56,7 +56,7 @@ public class WorkSpace {
 			} else if (age >= 47) {
 				score += 0;
 			}
-
+		}
 
     private static int applicantFiles(String inputFileName, String outputFileName) {
 		return ;
