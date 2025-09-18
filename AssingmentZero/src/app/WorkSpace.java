@@ -2,7 +2,7 @@
 import java.util.Scanner;
 
 public class WorkSpace {
-// will input a input file, output file prompt
+// will create a input file and output file prompt
     public static void main (String [] args) {
     	
     	Scanner keyboard = new Scanner(System.in);
