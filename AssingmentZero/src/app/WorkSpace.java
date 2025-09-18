@@ -2,7 +2,7 @@
 import java.util.Scanner;
 
 public class WorkSpace {
-	
+// will input a input file, output file prompt
     public static void main (String [] args) {
     	
     	Scanner keyboard = new Scanner(System.in);
@@ -11,7 +11,7 @@ public class WorkSpace {
         
         System.out.print("Please provide the name of the output file (to be located in data/input/): ");
         String outputFileName = keyboard.nextLine();
-       
+// will display the number of qualified apllicants by using data from the inputfile
         int qualifiedCount = applicantFiles(inputFileName, outputFileName);
     
         System.out.println("There were qualified applicants: " + qualifiedCount);
