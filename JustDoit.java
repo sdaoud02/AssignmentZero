@@ -23,77 +23,108 @@ public class JustDoit {
 		//String name = input.next();
 		//System.out.println("Hello " + name);
 		
+		ArrayList<String> lines = new ArrayList<String>(); 
+		
 		File filePath = new File("res/dataset-10.txt");
 		Scanner inputFile = new Scanner(filePath);
-			// Read a line from the file
-			
-			//Put file into array list and read everything on each line as 0-10
-		File file = new File("res/dataset-10.txt");
-		String word = inputFile.nextLine();
-		//System.out.println(word);
 		
-
-			
-		boolean test = true;
-			//reads first line from text file, put these items into an arraylist and then 
-		//String word = inputFile.nextLine();
-			//System.out.println(word);
-		/*switch (word) {
-			case "Two or more certificates, diplomas, or degrees":
-				System.out.println("You have 22 points");
-				break;
-		}*/
-			//prompt();
-			
-			do{
-				prompt();
-				String str = inputFile.nextLine();
-
-				switch (str) {
-					case "Secondary school (high school diploma)":
-						//int points = 5;
-						System.out.println("You have 5 points");
-						break;
-					case "One-year degree, diploma or certificate":
-						//int pointss = 15;
-						System.out.println("You have 15 points");
-						break;
-					case "Two-year degree, diploma or certificate":
-						int pointsss = 19;
-						break;
-					case "Bachelor's degree or other programs (three or more years)":
-						int pointssss = 21;
-						break;
-					case "Two or more certificates, diplomas, or degrees":
-						System.out.println("You have 22 points");
-						//int pointsssss = 22;
-						break;
-					case "Professional degree needed to practice in a licensed profession":
-						int pointssssss = 23;
-						break;
-					case "University degree at the Master's level":
-						int pointsssssss = 23;
-						break;
-					case "University degree at the Doctoral (PhD) level":
-						int pointssssssss = 25;
-						break;
-					default:
-						System.out.println("Enter a valid option");
-						break;
-				}
-			} while (test == true);
-			
-			/*input.close();
-			inputFile.close();*/
+		while(inputFile.hasNextLine()) {
+			lines.add(inputFile.nextLine());
 		}
-	
+		inputFile.close();
 		
+			
+		prompt();
+		String inFi = input.nextLine();
+		String ouFi = input.nextLine();
+		
+		
+		PrintWriter outputFile = new PrintWriter("res/" + ouFi);
+		int qualified = 0;
+		for (String line : lines) {
+			ArrayList<String> update = new ArrayList<>();
+			String check = "";
+			boolean quotation = false;
+			for (int i = 0; i < line.length(); i++) {
+				char a = line.charAt(i);
+				if (a == '"' && a == ',') {
+		            quotation = !quotation;  
+		        } else if (a == ',' && !quotation) {
+		            update.add(check);
+		            check = "";
+		        } else {
+		            check = check + a;
+		        }
+			}
+			update.add(check);
+			
+			String firstName = lines.get(0);
+			String lastName = lines.get(1);
+			String age = lines.get(2);
+			String education = lines.get(10);
+			String work = lines.get(11);
+			
+			int points = pointsEducation(education) + pointsWork(work);
+			
+			outputFile.println("First name       | Last name       |  Age | Score \n");
+			outputFile.println("-----------------+-----------------+------+------- \n");
+			if (points >= 67) {
+				qualified ++;
+				outputFile.println(firstName + "       | " + lastName + "       |  " + age + " | " + points);
+			}
 
+		}
+			outputFile.close();
+			System.out.println("\n\n There were " + qualified + "qualified applicants");
+			input.close();
+		
+		}
+		
 		public static void prompt() {
 			System.out.println("Please provide the name of the input file (to be located in data/input): ");
-			String inFil = input.nextLine();
-			System.out.println("Please provide the name of the output file (to be placed in data/input/): ");
-			String outFil = input.nextLine();
+			System.out.println("Please provide the name of the output file (to be placed in data/output/): ");
+			
+		}
+		public static int pointsEducation(String education) {
+				switch (education) {
+					case "Secondary school (high school diploma)":
+						return 5;
+					case "One-year degree, diploma or certificate":
+						return 15;
+					case "Two-year degree, diploma or certificate":
+						return 19;
+					case "Bachelor's degree or other programs (three or more years)":
+						return 21;
+					case "Two or more certificates, diplomas, or degrees":
+						return 22;
+					case "Professional degree needed to practice in a licensed profession":
+						return 23;
+					case "University degree at the Master's level":
+						return 23;
+					case "University degree at the Doctoral (PhD) level":
+						return 25;
+					default:
+						return 0;
+				}	
+		}
+		public static int pointsWork(String work) {
+			switch (work) {
+				case "0":
+					return 0;
+				case "1":
+					return 9;
+				case "2":
+					return 11;
+				case "3":
+					return 11;
+				case "4":
+					return 13;
+				case "5":
+					return 13;
+				default:
+					return 15;
+			}
+			
 		}
 
 		// will calc language points for first offical language 
