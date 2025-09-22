@@ -95,10 +95,6 @@ public class JustDoit {
 			System.out.println("Please provide the name of the output file (to be placed in data/input/): ");
 			String outFil = input.nextLine();
 		}
-		public static void pointsAge() {
-			int points = 0;
-			
-		}
 
 		// will calc language points for first offical language 
 		public static int getFirstOfficialLanguagePoints(String speak, String listen, String read, String write){
@@ -126,9 +122,53 @@ public class JustDoit {
 			if (years <= 5) return 13;
 			return 15;
 		}
+		//This calculates an applicant's score based on their age.
+		public static void calculateScoreAge(ArrayList<String> applicantList) {
+			for (int i = 0; i < applicantList.size(); i++) {
+				int age = Integer.parseInt(applicantList.get(i));
+				int score = 0;
+				
+				if (age < 18) {
+					score += 0;
+				} else if (age >= 18 && age <= 35) {
+					score += 12;
+				} else if (age == 36) {
+					score += 11;
+				} else if (age == 37) {
+					score += 10;
+				} else if (age == 38) {
+					score += 9;
+				} else if (age == 39) {
+					score += 8;
+				} else if (age == 40) {
+					score += 7;
+				} else if (age == 41) {
+					score += 6;
+				} else if (age == 42) {
+					score += 5;
+				} else if (age == 43) {
+					score += 4;
+				} else if (age == 44) {
+					score += 3; 
+				} else if (age == 45) {
+					score += 2;
+				} else if (age == 46) {
+					score += 1;
+				} else {
+					score += 0;
+				}
+			}
+		}
 
 		public static void qualified() {
 			
+		}
+
+		public static void scoreAdaptability(ArrayList<String> applicantList) {
+			for (int i = 0; i <applicantList.size(); i++) {
+				int score = 0;
+				
+			}
 		}
 		
 			
