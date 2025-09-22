@@ -87,7 +87,7 @@ public class JustDoit {
 			inputFile.close();*/
 		}
 	
-		// will calc to get the points for work expereince 
+		// will calc to get the points for work expereince and return the points for it
 		public static int getPointsWorkExperience(String experience) {
 			int years = Integer.parseInt(experience);
 			if (years < 1) return 0;
