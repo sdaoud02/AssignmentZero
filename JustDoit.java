@@ -86,7 +86,18 @@ public class JustDoit {
 			/*input.close();
 			inputFile.close();*/
 		}
+	
+		// will calc to get the points for work expereince 
+		private static int getPointsWorkExperience(String experience) {
+			int years = Integer.parseInt(experience);
+			if (years < 1) return 0;
+			if (years == 1) return 9;
+			if (years <= 3) return 11;
+			if (years <= 5) return 13;
+			return 15;
+		}
 		
+
 		public static void prompt() {
 			System.out.println("Please provide the name of the input file (to be located in data/input): ");
 			String inFil = input.nextLine();
