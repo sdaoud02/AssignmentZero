@@ -87,15 +87,6 @@ public class JustDoit {
 			inputFile.close();*/
 		}
 	
-		// will calc to get the points for work expereince and return the points for it
-		public static int getPointsWorkExperience(String experience) {
-			int years = Integer.parseInt(experience);
-			if (years < 1) return 0;
-			if (years == 1) return 9;
-			if (years <= 3) return 11;
-			if (years <= 5) return 13;
-			return 15;
-		}
 		
 
 		public static void prompt() {
@@ -108,7 +99,16 @@ public class JustDoit {
 			int points = 0;
 			
 		}
-		public static void pointsWork(){
+		// will calc to get the points for work expereince and return the points for it
+		public static int pointsWork(String experience){
+			int years = Integer.parseInt(experience);
+			if (years < 1) return 0;
+			if (years == 1) return 9;
+			if (years <= 3) return 11;
+			if (years <= 5) return 13;
+			return 15;
+		}
+
 			
 		}
 		public static void qualified() {
