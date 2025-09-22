@@ -99,8 +99,26 @@ public class JustDoit {
 			int points = 0;
 			
 		}
+
+		// will calc language points for first offical language 
+		public static int getFirstOfficialLanguagePoints(String speak, String listen, String read, String write){
+			int points = 0;
+			points += calculateSinglePoint(speak);
+			points += calculateSinglePoint(listen);
+			points += calculateSinglePoint(read);
+			points += calculateSinglePoint(write);
+			return points;
+		}
+		
+		public static int calculateSinglePoint(String clb) {
+			int clbLevel = Integer.parseInt(clb);
+			if (clbLevel >= 9) return 6;
+			if (clbLevel == 8) return 5;
+			if (clbLevel == 7) return 4;
+			return 0;
+		}
 		// will calc to get the points for work expereince and return the points for it
-		public static int pointsWork(String experience){
+		public static int pointsWork( String experience){
 			int years = Integer.parseInt(experience);
 			if (years < 1) return 0;
 			if (years == 1) return 9;
@@ -109,8 +127,6 @@ public class JustDoit {
 			return 15;
 		}
 
-			
-		}
 		public static void qualified() {
 			
 		}
