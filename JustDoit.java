@@ -88,7 +88,7 @@ public class JustDoit {
 		}
 	
 		// will calc to get the points for work expereince 
-		private static int getPointsWorkExperience(String experience) {
+		public static int getPointsWorkExperience(String experience) {
 			int years = Integer.parseInt(experience);
 			if (years < 1) return 0;
 			if (years == 1) return 9;
