@@ -2,6 +2,7 @@ package app;
 import java.io.File;
 //import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -58,11 +59,8 @@ public class JustDoit {
 			}
 			update.add(check);
 			
-			String firstName = lines.get(0);
-			String lastName = lines.get(1);
-			String age = lines.get(2);
-			String education = lines.get(10);
-			String work = lines.get(11);
+
+
 			
 			int points = pointsEducation(education) + pointsWork(work);
 			
@@ -145,7 +143,7 @@ public class JustDoit {
 			return 0;
 		}
 		// will calc to get the points for work expereince and return the points for it
-		public static int pointsWork( String experience){
+		public static int pointsWork(String experience){
 			int years = Integer.parseInt(experience);
 			if (years < 1) return 0;
 			if (years == 1) return 9;
@@ -154,11 +152,12 @@ public class JustDoit {
 			return 15;
 		}
 		//This calculates an applicant's score based on their age.
-		public static void calculateScoreAge(ArrayList<String> applicantList) {
+		public static int calculateScoreAge(ArrayList<String> applicantList) {
+			int score = 0;
+
 			for (int i = 0; i < applicantList.size(); i++) {
 				int age = Integer.parseInt(applicantList.get(i));
-				int score = 0;
-				
+
 				if (age < 18) {
 					score += 0;
 				} else if (age >= 18 && age <= 35) {
@@ -189,6 +188,7 @@ public class JustDoit {
 					score += 0;
 				}
 			}
+			return score;
 		}
 
 		public static void qualified() {
