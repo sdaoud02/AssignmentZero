@@ -167,7 +167,33 @@ public class JustDoit {
 		public static void scoreAdaptability(ArrayList<String> applicantList) {
 			for (int i = 0; i <applicantList.size(); i++) {
 				int score = 0;
-				
+
+				if (applicantList.get(12) == true) {
+					score += 5;
+				}
+				if (applicantList.get(13) == true) {
+					score += 5;
+				}
+				if (applicantList.get(14) == true) {
+					score += 5;
+				}
+				if (applicantList.get(15) == true) {
+					score += 5;
+				}
+				if (applicantList.get(16) == true) {
+					score += 10;
+				}
+				if (applicantList.get(17) == true) {
+					score += 5;
+				}
+				if (applicantList.get(18) == true) {
+					score += 5;
+				}
+				if (score >= 10) {
+					score += 10;
+				} else {
+					score += score;
+				}
 			}
 		}
 		
