@@ -29,13 +29,9 @@ public class JustDoit {
             fileScanner.nextLine();
         }
 
-        // will process file and write the output
-        PrintWriter outputFile = new PrintWriter("data/output/" + outputFileName);
+        // will count the applicants who are qualified and will collect their data 
+        ArrayList<String> qualifiedRows = new ArrayList<>();
         int qualifiedCount = 0;
-
-        
-        outputFile.println("First name       | Last name       | Age | Score");
-        outputFile.println("-----------------+-----------------+-----+------");
 
         while (fileScanner.hasNextLine()) {
             String line = fileScanner.nextLine();
@@ -51,21 +47,37 @@ public class JustDoit {
                 if (points >= 67) {
                     qualifiedCount++;
                     String row = firstName + " ".repeat(16 - firstName.length()) + " | "
-          		 + lastName + " ".repeat(15 - lastName.length()) + " | "
-           		+ String.format("%3d | %3d", age, points);
-                    outputFile.println(row);
-                    System.out.println(row);
+                           + lastName + " ".repeat(15 - lastName.length()) + " | "
+                           + String.format("%3d | %3d", age, points);
+                    qualifiedRows.add(row); // Store for later output
                 }
             }
         }
+        fileScanner.close();
 
+        // will write the output file
+        PrintWriter outputFile = new PrintWriter("data/output/" + outputFileName);
+        
+        // Output qualified count first
+        String countMessage = "There were " + qualifiedCount + " qualified applicants";
+        System.out.println(countMessage);
+        outputFile.println(countMessage);
+        outputFile.println();    
+        
+        // Output table headers
+        outputFile.println("First name       | Last name       | Age | Score");
+        outputFile.println("-----------------+-----------------+-----+------");
+        System.out.println("\nFirst name       | Last name       | Age | Score");
+        System.out.println("-----------------+-----------------+-----+------");
+        
+        // will write an output of all the applicants who are qualified
+        for (String row : qualifiedRows) {
+            outputFile.println(row);
+            System.out.println(row);
+        }
 
         outputFile.close();
-        fileScanner.close();
         input.close();
-
-
-        System.out.println("\nThere were " + qualifiedCount + " qualified applicants");
     }
 
     public static int calculateTotalScore(String[] applicantData) {
