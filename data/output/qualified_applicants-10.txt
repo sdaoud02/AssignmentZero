@@ -1,5 +1,3 @@
-There were 8 qualified applicants
-
 First name       | Last name       | Age | Score
 -----------------+-----------------+-----+------
 Aaron            | Grimm           |  30 |  86
