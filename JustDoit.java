@@ -16,10 +16,10 @@ public class JustDoit {
 		//String name = input.next();
 		//System.out.println("Hello " + name);
 
-        System.out.print("Please provide the name of the input file (to be located in data/input/): ");
+        System.out.print("Please provide the name of the input file (located in data or input): ");
         String inputFileName = input.nextLine();
 
-        System.out.print("Please provide the name of the output file (to be placed in data/output/): ");
+        System.out.print("Please provide the name of the output file (to be placed in data or output): ");
         String outputFileName = input.nextLine();
 
         // will read the the lines and will skip the first line which is the header
@@ -140,50 +140,54 @@ public class JustDoit {
         return 15;
     }
 	//This calculates an applicant's score based on their age.
-		public static int calculateScoreAge(ArrayList<String> applicantList) {
-			int score = 0;
 
-			for (int i = 0; i < applicantList.size(); i++) {
-				int age = Integer.parseInt(applicantList.get(i));
-
-				if (age < 18) {
-					score += 0;
-				} else if (age >= 18 && age <= 35) {
-					score += 12;
-				} else if (age == 36) {
-					score += 11;
-				} else if (age == 37) {
-					score += 10;
-				} else if (age == 38) {
-					score += 9;
-				} else if (age == 39) {
-					score += 8;
-				} else if (age == 40) {
-					score += 7;
-				} else if (age == 41) {
-					score += 6;
-				} else if (age == 42) {
-					score += 5;
-				} else if (age == 43) {
-					score += 4;
-				} else if (age == 44) {
-					score += 3; 
-				} else if (age == 45) {
-					score += 2;
-				} else if (age == 46) {
-					score += 1;
-				} else {
-					score += 0;
-				}
-			}
-			return score;
+	public static int calculateAgePoints(int age) {
+		int score = 0;
+	
+		if (age < 18) {
+			score = 0;
+		} else if (age >= 18 && age <= 35) {
+			score = 12;
+		} else if (age == 36) {
+			score = 11;
+		} else if (age == 37) {
+			score = 10;
+		} else if (age == 38) {
+			score = 9;
+		} else if (age == 39) {
+			score = 8;
+		} else if (age == 40) {
+			score = 7;
+		} else if (age == 41) {
+			score = 6;
+		} else if (age == 42) {
+			score = 5;
+		} else if (age == 43) {
+			score = 4;
+		} else if (age == 44) {
+			score = 3; 
+		} else if (age == 45) {
+			score = 2;
+		} else if (age == 46) {
+			score = 1;
+		} else {
+			score = 0;
 		}
+	
+		return score;
+	}
 
+     /*	will check if applicant has suitable employment 
+	 * 	If yes then 10 points will be earned
+	 *  If no then 0 points will be earned
+	 */
     public static int calculateArrangedEmploymentPoints(String arrangedEmployment) {
         return "yes".equalsIgnoreCase(arrangedEmployment) ? 10 : 0;
     }
 
-	// will check and calc the adaptability, the max amount of points is 10
+	/* Calculates and awards points based on Adaptability requirements
+	 * Max score is 10
+	 */
     public static int calculateAdaptabilityPoints(String[] applicantData) {
         int score = 0;
         if ("yes".equalsIgnoreCase(applicantData[12])) score += 5;
